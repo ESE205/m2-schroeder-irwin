@@ -25,8 +25,9 @@ args = parser.parse_args()
 debug = args.debug
 
 while True:
-    print_debug(f'input_pin = {GPIO.input(INPUT_PIN)}')
+
     state = GPIO.input(INPUT_PIN)
+    print_debug(f'input_pin = {state}')
     if state == GPIO.HIGH:
         GPIO.output(OUTPUT_PIN, GPIO.HIGH)
     else:
