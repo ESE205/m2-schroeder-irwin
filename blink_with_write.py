@@ -9,6 +9,19 @@ GPIO.setmode(GPIO.BOARD)   # Use physical pin numbering
 OUTPUT_PIN = 13
 INPUT_PIN = 11
 
+
+def print_debug(msg):
+    if debug:
+        print(msg)
+
+
+parser = argparse.ArgumentParser(
+    prog='program.py', description='Blink LED for a specified time and interval', epilog='Enjoy the program!')
+
+parser.add_argument('-d', '--debug', action='store_true')
+args = parser.parse_args()
+debug = args.debug
+
 start_time = time()
 
 
@@ -24,6 +37,7 @@ GPIO.setup(INPUT_PIN, GPIO.IN)
 while True:  # Run ITER_COUNT times
     input_pin = GPIO.input(INPUT_PIN)
     write_to_file(f'{time() - start_time}:\tinput_pin = {input_pin}')
+    print_debug(f'{time() - start_time}:\tinput_pin = {input_pin}')
     while (input_pin == GPIO.LOW):
         GPIO.output(OUTPUT_PIN, GPIO.HIGH)  # Turn on
         sleep(1)                     # Sleep for 1 second
