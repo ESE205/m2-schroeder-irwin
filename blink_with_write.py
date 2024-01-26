@@ -15,7 +15,7 @@ INPUT_PIN = 11
 
 
 def write_to_file(msg):
-    with open('log.txt', 'a') as f:
+    with open('data.txt', 'a') as f:
         f.write(msg + '\n')
 
 
@@ -24,8 +24,9 @@ GPIO.setup(INPUT_PIN, GPIO.IN)
 
 
 while True:  # Run ITER_COUNT times
-    while (GPIO.input(INPUT_PIN) == GPIO.LOW):
-        write_to_file(f'input_pin = {GPIO.input(INPUT_PIN)}')
+    input_pin = GPIO.input(INPUT_PIN)
+    write_to_file(f'input_pin = {input_pin}')
+    while (input_pin == GPIO.LOW):
         GPIO.output(OUTPUT_PIN, GPIO.HIGH)  # Turn on
         sleep(1)                     # Sleep for 1 second
         GPIO.output(OUTPUT_PIN, GPIO.LOW)  # Turn off
