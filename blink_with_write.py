@@ -38,7 +38,7 @@ while True:  # Run ITER_COUNT times
     input_pin = GPIO.input(INPUT_PIN)
     write_to_file(f'{time() - start_time}:\tinput_pin = {input_pin}')
     print_debug(f'{time() - start_time}:\tinput_pin = {input_pin}')
-    while (input_pin == GPIO.LOW):
+    if (input_pin == GPIO.LOW):
         GPIO.output(OUTPUT_PIN, GPIO.HIGH)  # Turn on
         sleep(1)                     # Sleep for 1 second
         GPIO.output(OUTPUT_PIN, GPIO.LOW)  # Turn off
