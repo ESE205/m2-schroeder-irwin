@@ -16,11 +16,14 @@ count = args.count
 GPIO.setup(OUTPUT_PIN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(INPUT_PIN, GPIO.IN)
 
-if GPIO.input(INPUT_PIN) == 1:
-    while count > 0:  # Run ITER_COUNT times
-        count -= 1  # Decrement counter
-        GPIO.output(OUTPUT_PIN, GPIO.HIGH)  # Turn on
-        sleep(1)                     # Sleep for 1 second
-        GPIO.output(OUTPUT_PIN, GPIO.LOW)  # Turn off
-        sleep(1)                     # Sleep for 1 second
+while (GPIO.input(INPUT_PIN) == GPIO.LOW):
+    sleep(0.1)
+
+while count > 0:  # Run ITER_COUNT times
+    count -= 1  # Decrement counter
+    GPIO.output(OUTPUT_PIN, GPIO.HIGH)  # Turn on
+    sleep(1)                     # Sleep for 1 second
+    GPIO.output(OUTPUT_PIN, GPIO.LOW)  # Turn off
+    sleep(1)                     # Sleep for 1 second
+
 GPIO.cleanup()
