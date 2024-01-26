@@ -8,7 +8,7 @@ pin1 = 13
 
 parser = argparse.ArgumentParser(
     prog='program.py', description='Blink LED for a specified time and interval', epilog='Enjoy the program!')
-parser.add_argument('count', type=int, default=5, optional=True)
+parser.add_argument('count', type=int, default=5, nargs='?')
 args = parser.parse_args()
 count = args.count
 
