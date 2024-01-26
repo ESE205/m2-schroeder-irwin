@@ -4,7 +4,7 @@ GPIO.setwarnings(False)    # Ignore warning for now
 GPIO.setmode(GPIO.BOARD)   # Use physical pin numbering
 
 ITER_COUNT = 15  
-pin1 = 11
+pin1 = 13
 
 GPIO.setup(pin1, GPIO.OUT, initial=GPIO.LOW)   
 
